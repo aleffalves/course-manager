@@ -1,23 +1,25 @@
+import { LocationStrategy } from "@angular/common";
 import { Injectable } from "@angular/core";
+import { NgForm } from "@angular/forms";
 import { Course } from "./course";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CourseService {
+export class CourseService{
 
     retrieveAll(): Course[] {
         return COURSES;
     }
 
-    retrieveById(id: number){
-        return COURSES.find((courseIterator: Course)=> courseIterator.id === id);
-    }
+    retrieveById(id : any): Course{
 
+        return this.retrieveById((courseIterator : Course) => courseIterator.id === id);
+    }
 }
 
 var COURSES: Course[] = [{
-    id: 1,
+    id:  1,
     name: 'Angular',
     imageUrl: '/assets/images/forms.png',
     price: 99.99,
